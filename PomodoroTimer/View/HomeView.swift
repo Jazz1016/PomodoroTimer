@@ -102,7 +102,6 @@ struct HomeView: View {
                 Color.black
                     .opacity(pomodoroModel.addNewTimer ? 0.25 : 0)
                     .onTapGesture {
-                        pomodoroModel.hour = 0
                         pomodoroModel.minutes = 0
                         pomodoroModel.seconds = 0
                         pomodoroModel.addNewTimer = false
@@ -141,21 +140,6 @@ struct HomeView: View {
                 .padding(.top, 10)
             
             HStack(spacing: 15) {
-                Text("\(pomodoroModel.hour) hr")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white.opacity(0.3))
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 12)
-                    .background {
-                        Capsule()
-                            .fill(.white.opacity(0.07))
-                    }
-                    .contextMenu {
-                        ContextMenuOptions(maxValue: 12, hint: "hr") { value in
-                            pomodoroModel.hour = value
-                        }
-                    }
                 
                 Text("\(pomodoroModel.minutes) min")
                     .font(.title3)
@@ -168,7 +152,7 @@ struct HomeView: View {
                             .fill(.white.opacity(0.07))
                     }
                     .contextMenu {
-                        ContextMenuOptions(maxValue: 60, hint: "min") { value in
+                        ContextMenuOptions(maxValue: 90, hint: "min") { value in
                             pomodoroModel.minutes = value
                         }
                     }
